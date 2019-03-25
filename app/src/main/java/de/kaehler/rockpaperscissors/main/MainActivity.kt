@@ -31,18 +31,26 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     override fun showPicks(playerPick: Pick, aiPick: Pick) {
         main_ai_pick_tv.visibility = View.VISIBLE
-        val playerPickMessage = when(playerPick) {
+        val playerPickMessage = getPlayerPickMessage(playerPick)
+        val aiPickMessage = getAIPickMessage(aiPick)
+        val pickMessage = playerPickMessage + aiPickMessage
+        main_ai_pick_tv.text = pickMessage
+    }
+
+    private fun getPlayerPickMessage(playerPick: Pick) : String {
+        return when(playerPick) {
             Pick.ROCK -> getString(R.string.main_player_pick_rock)
             Pick.PAPER -> getString(R.string.main_player_pick_paper)
             Pick.SCISSORS -> getString(R.string.main_player_pick_scissors)
         }
-        val aiPickMessage = when(aiPick) {
+    }
+
+    private fun getAIPickMessage(aiPick: Pick) : String {
+        return when(aiPick) {
             Pick.ROCK -> getString(R.string.main_ai_pick_rock)
             Pick.PAPER -> getString(R.string.main_ai_pick_paper)
             Pick.SCISSORS -> getString(R.string.main_ai_pick_scissors)
         }
-        val pickMessage = playerPickMessage + aiPickMessage
-        main_ai_pick_tv.text = pickMessage
     }
 
     override fun showWin() {
