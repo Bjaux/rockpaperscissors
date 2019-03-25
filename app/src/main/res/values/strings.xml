@@ -1,0 +1,16 @@
+<resources>
+    <string name="main_tv_welcome">Welcome to a game of rock paper scissors!\nHit a Button below to play the game.</string>
+    <string name="app_name">RockPaperScissors</string>
+    <string name="main_button_rock">Rock</string>
+    <string name="main_button_paper">Paper</string>
+    <string name="main_button_scissors">Scissors</string>
+    <string name="main_player_pick_rock">You picked rock, </string>
+    <string name="main_player_pick_paper">You picked paper, </string>
+    <string name="main_player_pick_scissors">You picked scissors, </string>
+    <string name="main_ai_pick_rock">the AI picked rock.</string>
+    <string name="main_ai_pick_paper">the AI picked paper.</string>
+    <string name="main_ai_pick_scissors">the AI picked scissors.</string>
+    <string name="main_message_win">You won!\n\nHit a button below to play again.</string>
+    <string name="main_message_lose">Oh no, you lost! :(\n\nHit a button below to try again!</string>
+    <string name="main_message_draw">It\'s a draw!\n\nHit a button below to play again!</string>
+</resources>

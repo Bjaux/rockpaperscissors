@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "de.kaehler.rockpaperscissors"
+        minSdkVersion toolVersions.minSdk
+        targetSdkVersion toolVersions.targetSdk
+        versionCode toolVersions.versionCode
+        versionName toolVersions.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "android-rockpaperscissors-${variant.versionName}-${variant.buildType.name}.apk"
+        }
+    }
+}
+
+dependencies {
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$libVersions.supportLibrary"
+    implementation "com.android.support.constraint:constraint-layout:$libVersions.constraintLayout"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "com.jakewharton.timber:timber:$libVersions.timber"
+
+    testImplementation "org.koin:koin-test:$koin_version"
+    testImplementation "junit:junit:$testLibVersions.junit"
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

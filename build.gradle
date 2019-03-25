@@ -1,0 +1,56 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+        kotlin_version = '1.3.11'
+        koin_version = '1.0.1'
+
+        toolVersions = [
+                compileSdk : 28,
+                minSdk     : 21,
+                targetSdk  : 28,
+                gradle     : '3.3.2',
+                versionCode: project.versionCode.toInteger(),
+                versionName: project.version,
+        ]
+
+        libVersions = [
+                constraintLayout : '1.1.3',
+                gson             : '2.8.5',
+                kotlinxCoroutines: '1.0.0',
+                supportLibrary   : '28.0.0',
+                timber           : '4.7.1',
+
+        ]
+
+        testLibVersions = [
+                junit             : '4.12',
+                kluent            : '1.40',
+                mockitoKotlin     : '2.1.0',
+                robolectric       : '3.8',
+                robolectricShadows: '3.4-rc2',
+        ]
+    }
+
+    repositories {
+        google()
+        jcenter()
+        
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$toolVersions.gradle"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
