@@ -2,7 +2,7 @@ package de.kaehler.rockpaperscissors.main
 
 import de.kaehler.rockpaperscissors.mvp.AbstractPresenter
 
-internal class MainPresenter : AbstractPresenter<MainContract.View>(), MainContract.Presenter{
+internal class MainPresenter(val randomPick: RandomPick) : AbstractPresenter<MainContract.View>(), MainContract.Presenter{
     override fun onPaperClicked() {
         evaluatePick(Pick.PAPER)
     }
@@ -15,8 +15,8 @@ internal class MainPresenter : AbstractPresenter<MainContract.View>(), MainContr
         evaluatePick(Pick.ROCK)
     }
 
-    fun evaluatePick(playerPick: Pick) {
-        val aiPick = pickRandom()
+    private fun evaluatePick(playerPick: Pick) {
+        val aiPick = randomPick.random()
         view?.hideWelcome()
         view?.showPicks(playerPick, aiPick)
         when(playerPick) {
@@ -40,6 +40,4 @@ internal class MainPresenter : AbstractPresenter<MainContract.View>(), MainContr
                 }
         }
     }
-
-    fun pickRandom() : Pick = Pick.values().random()
 }
